@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Input from '../Components/Input'
 import RegButton from '../Components/RegButton';
 
@@ -16,6 +16,7 @@ const ControlSection = () => {
     const verifyUrl = (url:string) =>{
         try {
             new URL(url);
+            setIsUrl(true)
             alert('yes')
 
         } catch (error) {
