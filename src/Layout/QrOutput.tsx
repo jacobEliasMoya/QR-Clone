@@ -13,7 +13,7 @@ return (
     <>
         {appUrl.length > 0 && appUrl ? 
             <QRCodeSVG  value={appUrl}/> : 
-            <img src={qr} alt="" className="w-1/2"/>
+            <img src={qr} alt="" className="w-1/3 md:w-1/2"/>
         }
         
     </>

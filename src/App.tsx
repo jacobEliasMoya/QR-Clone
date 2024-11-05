@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="font-retro md:w-7/12 w-11/12 flex flex-wrap mx-auto min-h-40 mt-8 rounded overflow-hidden">
+      <div className="font-retro  md:w-2/3 w-11/12 flex flex-wrap mx-auto min-h-40 mt-8 rounded overflow-hidden">
         <div className="md:w-2/3 w-full bg-zinc-200 p-8">
           <ControlSection />
         </div>
