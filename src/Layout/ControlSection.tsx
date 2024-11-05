@@ -1,34 +1,53 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Input from '../Components/Input'
-import RegButton from '../Components/RegButton';
-
+import { useDispatch,useSelector } from 'react-redux';
+import { RootState } from '../state/store';
+import {setInitialUrl} from '../state/UrlSlice/UrlSlice';
 
 
 const ControlSection = () => {
 
+
     const [urlState, setUrlState] = useState<string>();
     const [isUrl, setIsUrl] = useState<boolean>()
+
+    const appUrl = useSelector((state:RootState)=>state.initialUrl); 
+    const dispatch = useDispatch();
 
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         setUrlState(e.target.value)
     }
 
     const verifyUrl = (url:string) =>{
-        try {
+        try {   
             new URL(url);
             setIsUrl(true)
-            alert('yes')
-
+            
         } catch (error) {
-            alert('Please enter a valid URL \nEX: http://website.com or https://website.com')
+            setIsUrl(false)
         }
     }
+
+    const handleUrlState = () =>{
+        urlState ? dispatch(setInitialUrl(urlState)) : null
+    }
+
+    useEffect(()=>{
+
+        urlState? verifyUrl(urlState) : null;
+        isUrl? handleUrlState(): null;
+
+    },[urlState])
+
+    useEffect(()=>{
+        console.log(appUrl)
+    },[appUrl])
 
   return (
     <div>
 
-        <p className='mb-2'>Submit URL</p>
-        <p className='mb-3 text-sm text-blue-600'>For Best Results Copy and Paste the URL Into The Field Below.</p>
+        <p className='mb-2 text-xl'>Submit URL</p>
+        <p className='mb-3  text-blue-600'>For Best Results Copy and Paste the URL Into The Field Below.</p>
 
         <Input 
             inputType={'text'} 
@@ -37,15 +56,9 @@ const ControlSection = () => {
             inputOnchange={handleChange} 
             inputPlaceholder={undefined} 
         />
+        <p className='break-words mt-2 opacity-30'>Input: {urlState}</p>
 
-        <p className='mt-2 text-sm text-red-600 '>{ isUrl ? '' : 'Please Enter a Valid Url'}</p>
-
-        <RegButton
-            buttonClick={()=>urlState? verifyUrl(urlState):null}
-            buttonText='Generate QR'
-        />
-
-        <p className='break-words mt-2 opacity-30'>{urlState}</p>
+        { isUrl ? <p className='mt-2 text-green-600 '>Valid Url</p> : <p className='mt-2 text-red-600 '>Please Enter a Valid Url</p>}
 
     </div>
   )

@@ -8,7 +8,7 @@ type Props = {
 
 const Input = (props: Props) => {
   return (
-    <input className="p-2 px-4 rounded" onChange={props.inputOnchange} type={props.inputType} id={props.inputId} name={props.inputName} placeholder={props.inputPlaceholder}/>
+    <input className="p-2 px-4 rounded w-full" onChange={props.inputOnchange} type={props.inputType} id={props.inputId} name={props.inputName} placeholder={props.inputPlaceholder}/>
   )
 }
 
