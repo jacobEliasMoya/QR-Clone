@@ -29,7 +29,7 @@ const OptionsControl = () => {
         <div className= {isExpanded ?'w-full transition-all p-0 max-h-fit'  : 'w-full transition-all p-0 max-h-0 overflow-hidden' }>
            
 
-            <Header3 h3Class={'mt-4 text-blue-500 flex items-center gap-2 text-xl'} text={'Color: < currently not working >'} innerIcon={undefined} />
+            <Header3 h3Class={'mt-4 text-blue-500 flex items-center gap-2 text-xl'} text={'Color: < currently not workingd, In >'} innerIcon={undefined} />
         
             <Header3 h3Class={'  flex items-center gap-2 mt-2 '} text={'Background Color'} innerIcon={undefined} />
 
