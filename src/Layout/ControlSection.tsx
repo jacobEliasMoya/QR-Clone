@@ -4,7 +4,6 @@ import { useDispatch,useSelector } from 'react-redux';
 import { RootState } from '../state/store';
 import {setInitialUrl} from '../state/UrlSlice/UrlSlice';
 
-
 const ControlSection = () => {
 
 
@@ -56,7 +55,7 @@ const ControlSection = () => {
             inputOnchange={handleChange} 
             inputPlaceholder={undefined} 
         />
-        <p className='break-words mt-2 opacity-30'>Input: {urlState}</p>
+        <p className='break-words mt-2 opacity-30'>Your QR code will open this URL: {urlState}</p>
 
         { isUrl ? <p className='mt-2 text-green-600 '>Valid Url</p> : <p className='mt-2 text-red-600 '>Please Enter a Valid Url</p>}
 
