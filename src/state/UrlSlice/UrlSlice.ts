@@ -1,6 +1,6 @@
 import { createSlice,PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = '';
+const initialState:string = '';
 
 // url slice, will get from input in 
 const initialUrlSlice = createSlice({

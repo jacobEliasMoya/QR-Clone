@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import initialUrlReducer from "./UrlSlice/UrlSlice";
+import qrStyleReducer from "./UrlStyles/UrlStyles"
 
 export const store = configureStore({
     reducer:{
-        initialUrl: initialUrlReducer
+        initialUrl: initialUrlReducer,
+        qrStyles: qrStyleReducer
     }
 })
 

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import Input from '../Components/Input'
-import { useDispatch,useSelector } from 'react-redux';
-import { RootState } from '../state/store';
+import { useDispatch } from 'react-redux';
 import {setInitialUrl} from '../state/UrlSlice/UrlSlice';
 
 const ControlSection = () => {
@@ -10,7 +9,6 @@ const ControlSection = () => {
     const [urlState, setUrlState] = useState<string>();
     const [isUrl, setIsUrl] = useState<boolean>()
 
-    const appUrl = useSelector((state:RootState)=>state.initialUrl); 
     const dispatch = useDispatch();
 
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -37,10 +35,6 @@ const ControlSection = () => {
         isUrl? handleUrlState(): null;
 
     },[urlState])
-
-    useEffect(()=>{
-        console.log(appUrl)
-    },[appUrl])
 
   return (
     <div>
