@@ -43,12 +43,11 @@ const ControlSection = () => {
         <p className='mb-3  text-blue-600'>For Best Results Copy and Paste the URL Into The Field Below.</p>
 
         <Input 
-            inputType={'text'} 
-            inputId={'url_main'} 
-            inputName={'urlInput'}
-            inputOnchange={handleChange} 
-            inputPlaceholder={undefined} 
-        />
+              inputType={'text'}
+              inputId={'url_main'}
+              inputName={'urlInput'}
+              inputOnchange={handleChange}
+              inputPlaceholder={undefined} rangeMin={undefined} rangeMax={undefined} rangeValue={undefined}        />
         <p className='break-words mt-2 opacity-30'>Your QR code will open this URL: {urlState}</p>
 
         { isUrl ? <p className='mt-2 text-green-600 '>Valid Url</p> : <p className='mt-2 text-red-600 '>Please Enter a Valid Url</p>}

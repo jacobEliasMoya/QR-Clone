@@ -5,16 +5,19 @@ import { FaGear } from "react-icons/fa6";
 import { CirclePicker } from 'react-color';
 import Input from '../Components/Input';
 import RegButton from '../Components/RegButton';
-import { useDispatch } from 'react-redux';
-import {setBgColor,setDotColor} from '../state/UrlStyles/UrlStyles'
+import { useDispatch, useSelector } from 'react-redux';
+import {setBgColor,setDotColor, setQrMargin} from '../state/UrlStyles/UrlStyles'
+import { RootState } from '../state/store';
 
 const OptionsControl = () => {
     
     const dispatch = useDispatch();
+    const  appStyles = useSelector((state:RootState) => state.qrStyles);
 
     const [isExpanded,setIsExpanded] = useState<boolean>(false);
     const [customHex,setCustomHex] = useState<string>()
     const [customDot,setCustomDot] = useState<string>()
+    const [customMargin,setCustomMargin] = useState<number>()
 
     const handleCustomHex = (e:any) => { 
         setCustomHex(e.target.value)
@@ -24,12 +27,20 @@ const OptionsControl = () => {
         setCustomDot(e.target.value)
     }
 
+    const handleCustomMargin = (e:any) => { 
+        setCustomMargin(e.target.value)
+    }
+
     const handleBgChange = (e:any) =>{
         dispatch(setBgColor(e.hex))
     }
 
     const handleDotChange = (e:any) =>{
         dispatch(setDotColor(e.hex))
+    }
+
+    const handleMarginChange = (e:any) => {
+        dispatch(setQrMargin(e.target.value))
     }
 
     const handleChange = () =>{
@@ -44,11 +55,15 @@ const OptionsControl = () => {
         customDot ? dispatch(setDotColor(customDot)) : "" ;
     },[customDot])
     
+    useEffect(()=>{
+        customMargin ? dispatch(setQrMargin(customMargin)) : "" ;
+    },[customMargin])
+
   return (
 
     <div className='w-full p-4 bg-white rounded mt-4'>
 
-        <RegButton buttonText={'Options'} buttonClick={handleChange} additionalClasses={`w-full text-left flex items-center gap-2${!isExpanded ? ' mb-4 ' : ''}`} buttonIcon={<FaGear/>}/> 
+        <RegButton buttonText={'Options'} buttonClick={handleChange} additionalClasses={`w-full text-left flex items-center gap-4 md:justify-start justify-center ${!isExpanded ? ' mb-4 ' : ''}`} buttonIcon={<FaGear />} isDownload={false} buttonLink={undefined}/> 
 
         <div className= {isExpanded ?'w-full transition-all p-0 max-h-fit'  : 'w-full transition-all p-0 max-h-0 overflow-hidden' }>
            
@@ -59,11 +74,11 @@ const OptionsControl = () => {
 
             <div className="flex flex-wrap items-saart justify-between ">
                 <div className="w-full md:w-2/3 p-2">
-                    <Input inputType={'text'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleCustomHex} inputPlaceholder={'#ffffff'} />
+                    <Input inputType={'text'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleCustomHex} inputPlaceholder={'#ffffff'} rangeMin={undefined} rangeMax={undefined} rangeValue={undefined} />
                 </div>
                 <div className="w-full md:w-1/3 p-2">
                     <CirclePicker 
-                        circleSize={25} 
+                        circleSize={23} 
                         width='100%' 
                         circleSpacing={5}
                         onChangeComplete={handleBgChange}
@@ -75,11 +90,11 @@ const OptionsControl = () => {
 
             <div className="flex flex-wrap items-center justify-between">
                 <div className="w-full md:w-2/3 p-2">
-                    <Input inputType={'text'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleCustomDot} inputPlaceholder={'#ffffff'} />
+                    <Input inputType={'text'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleCustomDot} inputPlaceholder={'#ffffff'} rangeMin={undefined} rangeMax={undefined} rangeValue={undefined} />
                 </div>
                 <div className="w-full md:w-1/3 p-2">
                     <CirclePicker 
-                        circleSize={25} 
+                        circleSize={23} 
                         width='100%' 
                         circleSpacing={5}
                         onChangeComplete={handleDotChange}
@@ -87,18 +102,23 @@ const OptionsControl = () => {
                 </div>
             </div>    
 
-            {/* <Header3 h3Class={'  flex items-center gap-2 mt-4'} text={'Marker Border Color'} innerIcon={undefined} />
-            
+            <hr className='mt-5'/>
+
+            <Header3 h3Class={'mt-4 text-blue-500 flex items-center gap-2 text-xl'} text={'Spacing:'} innerIcon={undefined} />
+
+            <Header3 h3Class={'  flex items-center gap-2 mt-4'} text={'QR Margin'} innerIcon={undefined} />
+
             <div className="flex flex-wrap items-center justify-between">
                 <div className="w-full md:w-2/3 p-2">
-                    <Input inputType={'text'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={undefined} inputPlaceholder={'#ffffff'} />
+                    <Input inputType={'number'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleCustomMargin} inputPlaceholder={'0'} rangeMin={undefined} rangeMax={undefined} rangeValue={appStyles.qrMargin} />
                 </div>
+
                 <div className="w-full md:w-1/3 p-2">
-                    <CirclePicker circleSize={25} width='100%' circleSpacing={5}/>
+                    <Input inputType={'range'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleMarginChange} inputPlaceholder={'#ffffff'} rangeMin={0} rangeMax={50} rangeValue={appStyles.qrMargin} />
                 </div>
-            </div>        
+            </div>    
             
-            <Header3 h3Class={'  flex items-center gap-2 mt-4'} text={'Marker Central Color'} innerIcon={undefined} />
+            {/* <Header3 h3Class={'  flex items-center gap-2 mt-4'} text={'Marker Central Color'} innerIcon={undefined} />
             
             <div className="flex flex-wrap items-center justify-between">
                 <div className="w-full md:w-2/3 p-2  ">
