@@ -4,13 +4,19 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface StyleObj {
     bgColor:string,
     dotColor: string,
-    qrMargin: number
+    qrMargin: number,
+    initialSize: number
+    downloadSize: number,
+
 }
 
 const initialState:StyleObj = {
     bgColor: "",
     dotColor: "",
-    qrMargin: 1
+    qrMargin: 1,
+    initialSize: 1000,
+    downloadSize: 1500,
+
 };
 
 const urlStyleSlice = createSlice({

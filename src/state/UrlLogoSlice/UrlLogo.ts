@@ -1,6 +1,8 @@
 import { createSlice,PayloadAction } from "@reduxjs/toolkit";
+import qrasset from "../../assets/yellow-happy-smile-face-emoticon-png.webp"
 
 interface LogoStyles {
+    useLogo:boolean,
     src: string,
     x: number | undefined,
     y: number |undefined,
@@ -8,14 +10,16 @@ interface LogoStyles {
     width: number,
     opacity: number,
     excavate: boolean,
+ 
 }
 
 const initialState:LogoStyles = {
-    src: '',
+    useLogo: true,
+    src: qrasset,   
     x: undefined,
     y: undefined,
-    height: 30,
-    width: 30,
+    height: 250,
+    width: 250,
     opacity: 1,
     excavate: true,
 }
