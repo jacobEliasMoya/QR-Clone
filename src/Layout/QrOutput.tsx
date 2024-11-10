@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import domtoimage from 'dom-to-image';
 import RegButton from "../Components/RegButton";
 import { FaDownload } from "react-icons/fa6";
+import qrasset from "../assets/qr code generator.png"
+
 
 const QrOutput = () => {
 
@@ -36,7 +38,19 @@ const QrOutput = () => {
         <div className=" flex w-full h-full flex-col text-center items-center gap-4 ">
             <Header2 h2Class={ ' text-2xl text-green-600 ' } text={ appUrl.length > 0 && appUrl ? appUrl : '' } innerIcon={ undefined }/>
 
-            <span className=" w-full h-full md:h-min" id="svg"><QRCodeSVG  crossOrigin='use-credentials' title={`${appUrl} Generated QR `} marginSize={qrStyles.qrMargin} fgColor={ qrStyles.dotColor.length > 0 ? qrStyles.dotColor : '#0f172a' } bgColor={ qrStyles.bgColor.length > 0 ? qrStyles.bgColor : '#ffffff' } className="w-full h-full md:h-min transition-all" value={ appUrl.length > 0 && appUrl ? appUrl : '' } /></span>
+            <span className=" w-full h-full md:h-min" id="svg">
+                <QRCodeSVG 
+                  imageSettings={{
+                    src: qrasset,
+                    x: undefined,
+                    y: undefined,
+                    height: 24,
+                    width: 24,
+                    opacity: 1,
+                    excavate: true,
+                  }}
+                crossOrigin='use-credentials' title={`${appUrl} Generated QR `} marginSize={qrStyles.qrMargin} fgColor={ qrStyles.dotColor.length > 0 ? qrStyles.dotColor : '#0f172a' } bgColor={ qrStyles.bgColor.length > 0 ? qrStyles.bgColor : '#ffffff' } className="w-full h-full md:h-min transition-all" value={ appUrl.length > 0 && appUrl ? appUrl : '' } />
+            </span>
         
             <RegButton buttonText={'Download PNG'} buttonClick={undefined} additionalClasses={`w-full text-left  items-center gap-4 md:justify-start justify-center ${appUrl ? 'flex':'hidden'}`} buttonIcon={<FaDownload/>} isDownload={true} buttonLink={mainUrl ? mainUrl : ''}/> 
 
