@@ -18,8 +18,8 @@ const initialState:LogoStyles = {
     src: qrasset,   
     x: undefined,
     y: undefined,
-    height: 250,
-    width: 250,
+    height: 10,
+    width: 10,
     opacity: 1,
     excavate: true,
 }

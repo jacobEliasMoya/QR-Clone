@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import domtoimage from 'dom-to-image';
 import RegButton from "../Components/RegButton";
 import { FaDownload } from "react-icons/fa6";
-import qrasset from "../assets/yellow-happy-smile-face-emoticon-png.webp"
 
 
 const QrOutput = () => {
@@ -50,13 +49,13 @@ const QrOutput = () => {
                     src: qrLogo.src,
                     x: undefined,
                     y: undefined,
-                    height: qrLogo.height,
-                    width: qrLogo.width,
+                    height: 140,
+                    width: 140,
                     opacity: 1,
                     excavate: true,
                 }}
 
-                 size={qrStyles.initialSize} id="svg" title={`${appUrl} Generated QR `} marginSize={qrStyles.qrMargin} fgColor={ qrStyles.dotColor.length > 0 ? qrStyles.dotColor : '#0f172a' } bgColor={ qrStyles.bgColor.length > 0 ? qrStyles.bgColor : '#ffffff' } className="w-full h-full   transition-all" value={ appUrl.length > 0 && appUrl ? appUrl : '' } />
+                 size={qrStyles.initialSize} id="svg"  title={`${appUrl} Generated QR `} marginSize={qrStyles.qrMargin} fgColor={ qrStyles.dotColor.length > 0 ? qrStyles.dotColor : '#0f172a' } bgColor={ qrStyles.bgColor.length > 0 ? qrStyles.bgColor : '#ffffff' } className="w-full h-full   transition-all" value={ appUrl.length > 0 && appUrl ? appUrl : '' } />
             </div>
         
             <RegButton buttonText={'Download PNG'} buttonClick={undefined} additionalClasses={`w-full text-left  items-center gap-4 md:justify-start justify-center ${appUrl ? 'flex':'hidden'}`} buttonIcon={<FaDownload/>} isDownload={true} buttonLink={mainUrl ? mainUrl : ''}/> 
