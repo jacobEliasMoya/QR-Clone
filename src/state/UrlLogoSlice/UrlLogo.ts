@@ -14,14 +14,14 @@ const initialState:LogoStyles = {
     src: '',
     x: undefined,
     y: undefined,
-    height: 24,
-    width: 24,
+    height: 30,
+    width: 30,
     opacity: 1,
     excavate: true,
 }
 
 const UrlLogoStyles = createSlice({
-    name:'',
+    name:'logostyles',
     initialState,
     reducers:{
         setLogoUrl: (state,action:PayloadAction<string>)=>{
@@ -30,3 +30,4 @@ const UrlLogoStyles = createSlice({
 })
 
 export const {setLogoUrl} = UrlLogoStyles.actions
+export default UrlLogoStyles.reducer
