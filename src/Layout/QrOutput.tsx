@@ -30,7 +30,7 @@ const QrOutput = () => {
                 height: qrStyles.downloadSize,
             })
             .then((dataURL)=>{
-                setMainUrl(dataURL)
+                setMainUrl(encodeURI(dataURL))
             })
             .catch((error) => {
               console.error('Error converting DOM to image:', error);
