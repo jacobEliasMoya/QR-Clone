@@ -25,7 +25,10 @@ const QrOutput = () => {
     useEffect(()=>{ 
         handleSVG()
          if(mainSvg){
-            domtoimage.toPng(mainSvg)
+            domtoimage.toPng(mainSvg,{
+                width: qrStyles.downloadSize,
+                height: qrStyles.downloadSize,
+            })
             .then((dataURL)=>{
                 setMainUrl(dataURL)
             })
@@ -42,15 +45,15 @@ const QrOutput = () => {
             <div className=" w-full h-full md:h-min block">
                 <QRCodeCanvas 
 
-                imageSettings={{
-                    src: qrLogo.src,
-                    x: undefined,
-                    y: undefined,
-                    height: 140,
-                    width: 140,
-                    opacity: 1,
-                    excavate: true,
-                }}
+                    imageSettings={{
+                        src: qrLogo.src,
+                        x: undefined,
+                        y: undefined,
+                        height: 140,
+                        width: 140,
+                        opacity: 1,
+                        excavate: true,
+                    }}
 
                  size={qrStyles.initialSize} id="svg"  title={`${appUrl} Generated QR `} marginSize={qrStyles.qrMargin} fgColor={ qrStyles.dotColor.length > 0 ? qrStyles.dotColor : '#0f172a' } bgColor={ qrStyles.bgColor.length > 0 ? qrStyles.bgColor : '#ffffff' } className="w-full h-full   transition-all" value={ appUrl.length > 0 && appUrl ? appUrl : '' } />
             </div>
