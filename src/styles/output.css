@@ -839,6 +839,10 @@ video {
     width: 66.666667% !important;
   }
 
+  .md\:w-1\/2 {
+    width: 50% !important;
+  }
+
   .md\:items-start {
     align-items: flex-start !important;
   }

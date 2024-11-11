@@ -6,8 +6,7 @@ interface LogoStyles {
     src: string,
     x: number | undefined,
     y: number |undefined,
-    height: number,
-    width: number,
+    dims: number,
     opacity: number,
     excavate: boolean,
 }
@@ -17,8 +16,7 @@ const initialState:LogoStyles = {
     src: qrasset,   
     x: undefined,
     y: undefined,
-    height: 140,
-    width: 140,
+    dims: 150,
     opacity: 1,
     excavate: true,
 }
@@ -27,10 +25,11 @@ const UrlLogoStyles = createSlice({
     name:'logostyles',
     initialState,
     reducers:{
-        setLogoUrl: (state,action:PayloadAction<string>)=>{
+        setLogoDims: (state,action:PayloadAction<number>)=>{
+            return {...state,dims: action.payload}
         }
     },
 })
 
-export const {setLogoUrl} = UrlLogoStyles.actions
+export const {setLogoDims} = UrlLogoStyles.actions
 export default UrlLogoStyles.reducer

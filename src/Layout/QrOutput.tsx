@@ -31,14 +31,14 @@ const QrOutput = () => {
             <Header2 h2Class={ ' text-2xl text-green-600 ' } text={ appUrl.length > 0 && appUrl ? appUrl : '' } innerIcon={ undefined }/>
 
             <div className=" w-full h-full md:h-min block">
+                
                 <QRCodeCanvas 
-
                     imageSettings={{
                         src: qrLogo.src,
                         x: undefined,
                         y: undefined,
-                        height: qrLogo.height,
-                        width: qrLogo.width,
+                        height: qrLogo.dims,
+                        width: qrLogo.dims,
                         opacity: 1,
                         excavate: true,
                     }}

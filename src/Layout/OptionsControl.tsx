@@ -7,17 +7,20 @@ import Input from '../Components/Input';
 import RegButton from '../Components/RegButton';
 import { useDispatch, useSelector } from 'react-redux';
 import {setBgColor,setDotColor, setQrMargin} from '../state/UrlStyles/UrlStyles'
+import {setLogoDims} from '../state/UrlLogoSlice/UrlLogo'
 import { RootState } from '../state/store';
 
 const OptionsControl = () => {
     
     const dispatch = useDispatch();
     const  appStyles = useSelector((state:RootState) => state.qrStyles);
+    const  logoStyles = useSelector((state:RootState) => state.logoStyles);
 
     const [isExpanded,setIsExpanded] = useState<boolean>(false);
     const [customHex,setCustomHex] = useState<string>()
     const [customDot,setCustomDot] = useState<string>()
     const [customMargin,setCustomMargin] = useState<number>()
+    const [customLogoSize,setCustomLogoSize] = useState<number>()
 
     const handleCustomHex = (e:any) => { 
         setCustomHex(e.target.value)
@@ -43,6 +46,14 @@ const OptionsControl = () => {
         dispatch(setQrMargin(e.target.value))
     }
 
+    const handleLogoSizeChange = (e:any) => {
+        dispatch(setLogoDims(e.target.value))
+    }
+
+    const customLogoSizeChange = (e:any) => {
+        setCustomLogoSize(e.target.value)
+    }
+
     const handleChange = () =>{
         setIsExpanded(prev=>!prev);
     }
@@ -58,6 +69,10 @@ const OptionsControl = () => {
     useEffect(()=>{
         customMargin ? dispatch(setQrMargin(customMargin)) : "" ;
     },[customMargin])
+
+    useEffect(()=>{
+        customLogoSize ? dispatch(setLogoDims(customLogoSize)) : "" ;
+    },[customLogoSize])
 
   return (
 
@@ -109,15 +124,31 @@ const OptionsControl = () => {
             <Header3 h3Class={'  flex items-center gap-2 mt-4'} text={'QR Margin'} innerIcon={undefined} />
 
             <div className="flex flex-wrap items-center justify-between">
-                <div className="w-full md:w-2/3 p-2">
+                <div className="w-full md:w-1/2 p-2">
                     <Input inputType={'number'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleCustomMargin} inputPlaceholder={'0'} rangeMin={undefined} rangeMax={undefined} rangeValue={appStyles.qrMargin} />
                 </div>
 
-                <div className="w-full md:w-1/3 p-2">
+                <div className="w-full md:w-1/2 p-2">
                     <Input inputType={'range'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleMarginChange} inputPlaceholder={'#ffffff'} rangeMin={0} rangeMax={50} rangeValue={appStyles.qrMargin} />
                 </div>
             </div>    
             
+            <hr className='mt-5'/>
+
+            <Header3 h3Class={'mt-4 text-blue-500 flex items-center gap-2 text-xl'} text={'Logo:'} innerIcon={undefined} />
+
+            <Header3 h3Class={'  flex items-center gap-2 mt-4'} text={'Logo Size'} innerIcon={undefined} />
+
+            <div className="flex flex-wrap items-center justify-between">
+                <div className="w-full md:w-1/2 p-2">
+                    <Input inputType={'number'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={customLogoSizeChange} inputPlaceholder={'0'} rangeMin={0} rangeMax={150} rangeValue={logoStyles.dims} />
+                </div>
+
+                <div className="w-full md:w-1/2 p-2">
+                    <Input inputType={'range'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleLogoSizeChange} inputPlaceholder={'#ffffff'} rangeMin={0} rangeMax={150} rangeValue={logoStyles.dims} />
+                </div>
+            </div>    
+
             {/* <Header3 h3Class={'  flex items-center gap-2 mt-4'} text={'Marker Central Color'} innerIcon={undefined} />
             
             <div className="flex flex-wrap items-center justify-between">
