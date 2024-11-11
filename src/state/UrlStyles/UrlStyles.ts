@@ -14,8 +14,8 @@ const initialState:StyleObj = {
     bgColor: "",
     dotColor: "",
     qrMargin: 1,
-    initialSize: 300,
-    downloadSize: 300,
+    initialSize: 1000,
+    downloadSize: 1500,
 
 };
 

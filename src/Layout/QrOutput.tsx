@@ -3,7 +3,6 @@ import { RootState } from "../state/store";
 import { QRCodeCanvas } from "qrcode.react"
 import Header2 from "../Components/Header2";
 import { useEffect, useState } from "react";
-import domtoimage from 'dom-to-image';
 import RegButton from "../Components/RegButton";
 import { FaDownload } from "react-icons/fa6";
 
@@ -23,18 +22,22 @@ const QrOutput = () => {
     }
 
     useEffect(()=>{ 
-        handleSVG()
-         if(mainSvg){
-            domtoimage.toPng(mainSvg,{
-                width: qrStyles.downloadSize,
-                height: qrStyles.downloadSize,
-            })
-            .then((dataURL)=>{
-                setMainUrl(encodeURI(dataURL))
-            })
-            .catch((error) => {
-              console.error('Error converting DOM to image:', error);
-            });
+        handleSVG();
+
+        if(mainSvg){
+            setMainUrl(mainSvg.toDataURL())
+            // domtoimage.toPng(mainSvg,{
+            //     width: qrStyles.downloadSize,
+            //     height: qrStyles.downloadSize,
+            // })
+            // .then((dataURL)=>{
+            //      console.log(x)
+            //     console.log(dataURL)
+            //     setMainUrl(dataURL)
+            // })
+            // .catch((error) => {
+            //   console.error('Error converting DOM to image:', error);
+            // });
         }
     },[qrStyles,appUrl])
 
