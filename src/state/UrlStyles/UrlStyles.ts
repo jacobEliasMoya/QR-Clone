@@ -5,7 +5,11 @@ interface StyleObj {
     bgColor:string,
     dotColor: string,
     qrMargin: number,
-    initialSize: number
+    initialSize: {
+        sm: number,
+        md: number,
+        lg: number 
+    },
     downloadSize: number,
 
 }
@@ -14,7 +18,11 @@ const initialState:StyleObj = {
     bgColor: "",
     dotColor: "",
     qrMargin: 1,
-    initialSize: 1000,
+    initialSize: {
+        sm: 250,
+        md: 400,
+        lg: 768
+    },
     downloadSize: 1500,
 };
 
