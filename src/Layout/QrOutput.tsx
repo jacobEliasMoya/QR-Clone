@@ -5,7 +5,7 @@ import Header2 from "../Components/Header2";
 import { useEffect, useState } from "react";
 import RegButton from "../Components/RegButton";
 import { FaDownload } from "react-icons/fa6";
-
+import DomToImage from "dom-to-image";
 
 const QrOutput = () => {
 
@@ -25,19 +25,16 @@ const QrOutput = () => {
         handleSVG();
 
         if(mainSvg){
-            setMainUrl(mainSvg.toDataURL())
-            // domtoimage.toPng(mainSvg,{
-            //     width: qrStyles.downloadSize,
-            //     height: qrStyles.downloadSize,
-            // })
-            // .then((dataURL)=>{
-            //      console.log(x)
-            //     console.log(dataURL)
-            //     setMainUrl(dataURL)
-            // })
-            // .catch((error) => {
-            //   console.error('Error converting DOM to image:', error);
-            // });
+            DomToImage.toPng(mainSvg,{
+                width: qrStyles.downloadSize,
+                height: qrStyles.downloadSize,
+            })
+            .then((dataURL)=>{
+                setMainUrl(decodeURI(dataURL))
+            })
+            .catch((error) => {
+              console.error('Error converting DOM to image:', error);
+            });
         }
     },[qrStyles,appUrl])
 
@@ -58,7 +55,7 @@ const QrOutput = () => {
                         excavate: true,
                     }}
 
-                 size={qrStyles.initialSize} id="svg"  title={`${appUrl} Generated QR `} marginSize={qrStyles.qrMargin} fgColor={ qrStyles.dotColor.length > 0 ? qrStyles.dotColor : '#0f172a' } bgColor={ qrStyles.bgColor.length > 0 ? qrStyles.bgColor : '#ffffff' } className="w-full h-full   transition-all" value={ appUrl.length > 0 && appUrl ? appUrl : '' } />
+                 size={qrStyles.initialSize} id="svg" title={`${appUrl} Generated QR `} marginSize={qrStyles.qrMargin} fgColor={ qrStyles.dotColor.length > 0 ? qrStyles.dotColor : '#0f172a' } bgColor={ qrStyles.bgColor.length > 0 ? qrStyles.bgColor : '#ffffff' } className="w-full h-full   transition-all" value={ appUrl.length > 0 && appUrl ? appUrl : '' } />
             </div>
         
             <RegButton buttonText={'Download PNG'} buttonClick={undefined} additionalClasses={`w-full text-left  items-center gap-4 md:justify-start justify-center ${appUrl ? 'flex':'hidden'}`} buttonIcon={<FaDownload/>} isDownload={true} buttonLink={mainUrl ? mainUrl : ''}/> 

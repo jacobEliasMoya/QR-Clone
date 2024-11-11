@@ -16,7 +16,6 @@ const initialState:StyleObj = {
     qrMargin: 1,
     initialSize: 1000,
     downloadSize: 1500,
-
 };
 
 const urlStyleSlice = createSlice({
