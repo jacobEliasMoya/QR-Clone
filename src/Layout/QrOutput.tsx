@@ -22,13 +22,10 @@ const QrOutput = () => {
         setSVG(document.querySelector('#svg'))
     }
     
-    useEffect(()=>{
+    useEffect(()=>{ 
         handleSVG()
          if(mainSvg){
-            domtoimage.toPng(mainSvg,{
-                width: qrStyles.downloadSize,
-                height: qrStyles.downloadSize,
-            })
+            domtoimage.toPng(mainSvg)
             .then((dataURL)=>{
                 setMainUrl(dataURL)
             })
