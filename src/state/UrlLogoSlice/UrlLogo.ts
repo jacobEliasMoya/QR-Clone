@@ -10,7 +10,6 @@ interface LogoStyles {
     width: number,
     opacity: number,
     excavate: boolean,
- 
 }
 
 const initialState:LogoStyles = {
@@ -18,8 +17,8 @@ const initialState:LogoStyles = {
     src: qrasset,   
     x: undefined,
     y: undefined,
-    height: 100,
-    width: 100,
+    height: 50,
+    width: 50,
     opacity: 1,
     excavate: true,
 }

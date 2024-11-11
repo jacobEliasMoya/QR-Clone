@@ -21,7 +21,7 @@ const QrOutput = () => {
     const handleSVG = () =>{
         setSVG(document.querySelector('#svg'))
     }
-    
+
     useEffect(()=>{ 
         handleSVG()
          if(mainSvg){
@@ -49,8 +49,8 @@ const QrOutput = () => {
                         src: qrLogo.src,
                         x: undefined,
                         y: undefined,
-                        height: 140,
-                        width: 140,
+                        height: qrLogo.height,
+                        width: qrLogo.width,
                         opacity: 1,
                         excavate: true,
                     }}
