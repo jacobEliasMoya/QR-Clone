@@ -8,13 +8,13 @@ function App() {
   return (
     <>
       <Header />
-      <div className="font-retro  w-full flex flex-wrap mx-auto min-h-40 rounded overflow-hidden p-4 md:p-8">
-        <div className="md:w-2/3 w-full bg-zinc-200 p-8 ">
+      <div className="font-retro  w-full flex flex-wrap mx-auto min-h-40 rounded  p-4 md:p-8">
+        <div className="md:w-2/3 w-full bg-zinc-100 p-8 ">
           <ControlSection />
           <hr/>
           <OptionsControl/>
         </div>
-        <div className="md:w-1/3 w-full bg-zinc-100 p-8 flex items-center md:items-start justify-center ">
+        <div className=" md:w-1/3 w-full bg-zinc-200">
           <QrOutput/>
         </div>
       </div>

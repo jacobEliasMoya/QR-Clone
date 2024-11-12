@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {setBgColor,setDotColor, setQrMargin} from '../state/UrlStyles/UrlStyles'
 import {setLogoDims} from '../state/UrlLogoSlice/UrlLogo'
 import { RootState } from '../state/store';
+import FileUpload from '../Components/FileUpload';
 
 const OptionsControl = () => {
     
@@ -125,17 +126,19 @@ const OptionsControl = () => {
 
             <div className="flex flex-wrap items-center justify-between">
                 <div className="w-full md:w-1/2 p-2">
-                    <Input inputType={'number'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleCustomMargin} inputPlaceholder={'0'} rangeMin={undefined} rangeMax={undefined} rangeValue={appStyles.qrMargin} />
+                    <Input inputType={'number'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleCustomMargin} inputPlaceholder={'0'} rangeMin={1} rangeMax={5} rangeValue={appStyles.qrMargin} />
                 </div>
 
                 <div className="w-full md:w-1/2 p-2">
-                    <Input inputType={'range'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleMarginChange} inputPlaceholder={'#ffffff'} rangeMin={0} rangeMax={50} rangeValue={appStyles.qrMargin} />
+                    <Input inputType={'range'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleMarginChange} inputPlaceholder={'#ffffff'} rangeMin={0} rangeMax={5} rangeValue={appStyles.qrMargin} />
                 </div>
             </div>    
             
             <hr className='mt-5'/>
 
             <Header3 h3Class={'mt-4 text-blue-500 flex items-center gap-2 text-xl'} text={'Logo:'} innerIcon={undefined} />
+
+            <FileUpload />
 
             <Header3 h3Class={'  flex items-center gap-2 mt-4'} text={'Logo Size'} innerIcon={undefined} />
 

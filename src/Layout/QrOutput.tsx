@@ -27,11 +27,11 @@ const QrOutput = () => {
     },[qrStyles,appUrl])
 
     return (
-        <div className=" flex w-full h-full flex-col text-center items-center gap-4 ">
-            <Header2 h2Class={ ' text-2xl text-green-600 ' } text={ appUrl.length > 0 && appUrl ? appUrl : '' } innerIcon={ undefined }/>
-
-            <div className=" w-full h-full md:h-min block">
+        <div className="min-h-full">
+            <div className="w-full h-full md:h-min block sticky top-0  p-8 ">
                 
+                <Header2 h2Class={ `tracking-widest text-center mb-4 text-2xl text-green-600 ${appUrl.length > 0 && appUrl ? "": "hidden "}` } text={ appUrl.length > 0 && appUrl ? appUrl : '' } innerIcon={ undefined }/>
+
                 <QRCodeCanvas 
                     imageSettings={{
                         src: qrLogo.src,
@@ -44,9 +44,11 @@ const QrOutput = () => {
                     }}
 
                  size={qrStyles.initialSize.lg} id="svg" title={`${appUrl} Generated QR `} marginSize={qrStyles.qrMargin} fgColor={ qrStyles.dotColor.length > 0 ? qrStyles.dotColor : '#0f172a' } bgColor={ qrStyles.bgColor.length > 0 ? qrStyles.bgColor : '#ffffff' } className="w-full h-full   transition-all" value={ appUrl.length > 0 && appUrl ? appUrl : '' } />
+
+                <RegButton buttonText={'Download PNG'} buttonClick={undefined} additionalClasses={`w-full text-left  items-center gap-4 md:justify-start justify-center ${appUrl ? 'flex':'hidden'}`} buttonIcon={<FaDownload/>} isDownload={true} buttonLink={mainUrl ? mainUrl : ''}/> 
+
             </div>
         
-            <RegButton buttonText={'Download PNG'} buttonClick={undefined} additionalClasses={`w-full text-left  items-center gap-4 md:justify-start justify-center ${appUrl ? 'flex':'hidden'}`} buttonIcon={<FaDownload/>} isDownload={true} buttonLink={mainUrl ? mainUrl : ''}/> 
 
         </div>
     )
