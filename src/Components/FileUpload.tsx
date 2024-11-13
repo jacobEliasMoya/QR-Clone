@@ -1,21 +1,15 @@
-import { useEffect, useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
 import { useDispatch } from "react-redux";
 import { setLogoImage } from "../state/UrlLogoSlice/UrlLogo";
 
 const FileUpload = () => {
 
-    const [uploadedFile,setUploadFile] = useState<any>()  
     const dispatch = useDispatch();
 
     const handleFileUpload = (e: any) =>{
-        setUploadFile(URL.createObjectURL(e))
+        let x:string = URL.createObjectURL(e);
+        dispatch(setLogoImage(x))
     }
-
-    useEffect(()=>{
-        uploadedFile ? dispatch(setLogoImage(uploadedFile)) : null;
-    },[uploadedFile])
-    useEffect
 
     return (
         <>  

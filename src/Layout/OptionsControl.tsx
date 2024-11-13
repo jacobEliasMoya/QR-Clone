@@ -7,7 +7,7 @@ import Input from '../Components/Input';
 import RegButton from '../Components/RegButton';
 import { useDispatch, useSelector } from 'react-redux';
 import {setBgColor,setDotColor, setQrMargin} from '../state/UrlStyles/UrlStyles'
-import {setLogoDims} from '../state/UrlLogoSlice/UrlLogo'
+import {setLogoDims, setLogoImage} from '../state/UrlLogoSlice/UrlLogo'
 import { RootState } from '../state/store';
 import FileUpload from '../Components/FileUpload';
 
@@ -75,6 +75,8 @@ const OptionsControl = () => {
         customLogoSize ? dispatch(setLogoDims(customLogoSize)) : "" ;
     },[customLogoSize])
 
+
+
   return (
 
     <div className='w-full p-4 bg-white rounded mt-4'>
@@ -138,7 +140,7 @@ const OptionsControl = () => {
 
             <Header3 h3Class={'mt-4 text-blue-500 flex items-center gap-2 text-xl'} text={'Logo:'} innerIcon={undefined} />
 
-            <FileUpload />
+            <FileUpload   />
 
             <Header3 h3Class={'  flex items-center gap-2 mt-4'} text={'Logo Size'} innerIcon={undefined} />
 
@@ -151,19 +153,7 @@ const OptionsControl = () => {
                     <Input inputType={'range'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleLogoSizeChange} inputPlaceholder={'#ffffff'} rangeMin={0} rangeMax={150} rangeValue={logoStyles.dims} />
                 </div>
             </div>    
-
-            {/* <Header3 h3Class={'  flex items-center gap-2 mt-4'} text={'Marker Central Color'} innerIcon={undefined} />
-            
-            <div className="flex flex-wrap items-center justify-between">
-                <div className="w-full md:w-2/3 p-2  ">
-                    <Input inputType={'text'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={undefined} inputPlaceholder={'#ffffff'} />
-                </div>
-                <div className="w-full md:w-1/3 p-2">
-                    <CirclePicker circleSize={25} width='100%' circleSpacing={5}/>
-                </div>
-            </div> */}
-
-        </div>
+            </div>
 
     </div>
   )
