@@ -12,41 +12,36 @@ const QrOutput = () => {
     const qrStyles = useSelector((state:RootState)=>state.qrStyles);
     const qrLogo = useSelector((state:RootState)=>state.logoStyles);
 
-
     const [mainSvg, setSVG] = useState<any>();
     const [mainUrl, setMainUrl] = useState<string>();
 
     const handleSVG = () =>{
+        
         setSVG(document.querySelector('#svg'))
     }
 
     useEffect(()=>{
-        setTimeout(() => {
-            mainSvg ? setMainUrl(mainSvg.toDataURL()) : '';
-            }, 1);
-    },[mainSvg,appUrl,qrStyles,qrLogo])
-
-    useEffect(()=>{
         handleSVG();
-    },[mainSvg])
+        setTimeout(()=> {setMainUrl(mainSvg.toDataURL()) },100)  
+    },[appUrl,qrStyles,qrLogo])
 
     return (
         <div className="min-h-full">
-            <div className="w-full h-full md:h-min block sticky top-0  p-8 ">
+            <div className="w-full h-full md:h-min block sticky top-0  p-8 "    >
                 
                 <Header2 h2Class={ `tracking-widest text-center mb-4 text-2xl text-green-600 ${appUrl.length > 0 && appUrl ? "": "hidden "}` } text={ appUrl.length > 0 && appUrl ? appUrl : '' } innerIcon={ undefined }/>
 
                 <QRCodeCanvas 
 
-                imageSettings={{
-                    src: qrLogo.src,
-                    x: undefined,
-                    y: undefined,
-                    height: qrLogo.dims,
-                    width: qrLogo.dims,
-                    opacity: 1,
-                    excavate: true,
-                }}
+                    imageSettings={{
+                        src: qrLogo.src,
+                        x: undefined,
+                        y: undefined,
+                        height: qrLogo.dims,
+                        width: qrLogo.dims,
+                        opacity: 1,
+                        excavate: true,
+                    }}
 
                 size={qrStyles.initialSize.lg} id="svg" title={`${appUrl} Generated QR `} marginSize={qrStyles.qrMargin} fgColor={ qrStyles.dotColor.length > 0 ? qrStyles.dotColor : '#0f172a' } bgColor={ qrStyles.bgColor.length > 0 ? qrStyles.bgColor : '#ffffff' } className="w-full h-full   transition-all" value={ appUrl.length > 0 && appUrl ? appUrl : '' } />
 

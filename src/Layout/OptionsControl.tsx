@@ -7,7 +7,7 @@ import Input from '../Components/Input';
 import RegButton from '../Components/RegButton';
 import { useDispatch, useSelector } from 'react-redux';
 import {setBgColor,setDotColor, setQrMargin} from '../state/UrlStyles/UrlStyles'
-import {setLogoDims, setLogoImage} from '../state/UrlLogoSlice/UrlLogo'
+import {setLogoDims} from '../state/UrlLogoSlice/UrlLogo'
 import { RootState } from '../state/store';
 import FileUpload from '../Components/FileUpload';
 
