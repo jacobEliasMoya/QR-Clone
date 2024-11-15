@@ -5,6 +5,7 @@ import Header2 from "../Components/Header2";
 import { useEffect, useState } from "react";
 import RegButton from "../Components/RegButton";
 import { FaDownload } from "react-icons/fa6";
+import placeholder from "../assets/yellow-happy-smile-face-emoticon-png.webp";
 
 const QrOutput = () => {
 
@@ -13,17 +14,37 @@ const QrOutput = () => {
     const qrLogo = useSelector((state:RootState)=>state.logoStyles);
 
     const [mainSvg, setSVG] = useState<any>();
-    const [mainUrl, setMainUrl] = useState<string>();
+    const [mainUrl, setMainUrl] = useState<any>();
 
     const handleSVG = () =>{
-        
         setSVG(document.querySelector('#svg'))
     }
 
+    const handleUrlSet = () =>{
+        return new Promise((resolve,reject) => { 
+            setTimeout(() => {
+                qrLogo.src !=  placeholder ? resolve(true) : reject(false);
+            }, 500);
+        })
+    }
+
     useEffect(()=>{
-        handleSVG();
-        setTimeout(()=> {setMainUrl(mainSvg.toDataURL()) },100)  
+
+        handleUrlSet()
+            .then((res)=>{
+                res ? handleSVG() : null
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+            
     },[appUrl,qrStyles,qrLogo])
+
+    useEffect(()=>{
+
+        mainSvg ? setMainUrl(mainSvg.toDataURL()) : "";
+        
+    },[mainSvg])
 
     return (
         <div className="min-h-full">

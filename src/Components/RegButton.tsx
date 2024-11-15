@@ -1,6 +1,6 @@
 type Props = {
     buttonText:string,
-    buttonClick: any,
+    buttonClick: any | unknown,
     additionalClasses: string|undefined,
     buttonIcon:any | undefined,
     isDownload: boolean,
