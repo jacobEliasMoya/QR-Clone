@@ -32,18 +32,15 @@ const QrOutput = () => {
 
         handleUrlSet()
             .then((res)=>{
-                res ? handleSVG() : null
+                res ? handleSVG() : handleSVG() 
             })
             .catch((err)=>{
                 console.log(err)
             })
-            
     },[appUrl,qrStyles,qrLogo])
 
     useEffect(()=>{
-
         mainSvg ? setMainUrl(mainSvg.toDataURL()) : "";
-        
     },[mainSvg])
 
     return (
