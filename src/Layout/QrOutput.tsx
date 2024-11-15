@@ -13,11 +13,19 @@ const QrOutput = () => {
     const qrStyles = useSelector((state:RootState)=>state.qrStyles);
     const qrLogo = useSelector((state:RootState)=>state.logoStyles);
 
+    const [initialSvg, setInitialSVG] = useState<any>();
     const [mainSvg, setSVG] = useState<any>();
-    const [mainUrl, setMainUrl] = useState<any>();
+    const [mainUrl, setMainUrl] = useState<string>();
+
+
+    const handleInitialSvg = () =>{
+        let x = document.querySelector('#svg')
+        setInitialSVG(x)
+    }    
 
     const handleSVG = () =>{
-        setSVG(document.querySelector('#svg'))
+        let x = document.querySelector('#svg')
+        setSVG(x)
     }
 
     const handleUrlSet = () =>{
@@ -32,16 +40,25 @@ const QrOutput = () => {
 
         handleUrlSet()
             .then((res)=>{
-                res ? handleSVG() : handleSVG() 
+                res ? handleSVG() : null
             })
             .catch((err)=>{
                 console.log(err)
             })
+
     },[appUrl,qrStyles,qrLogo])
 
     useEffect(()=>{
-        mainSvg ? setMainUrl(mainSvg.toDataURL()) : "";
+        mainSvg ? setMainUrl(mainSvg.toDataURL()) : null ;
     },[mainSvg])
+
+    useEffect(()=>{
+        handleInitialSvg()    
+    },[])
+
+    useEffect(()=>{
+        initialSvg ? setMainUrl(initialSvg.toDataURL()) : null ;
+    },[initialSvg])
 
     return (
         <div className="min-h-full">
