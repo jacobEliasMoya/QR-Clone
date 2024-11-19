@@ -9,12 +9,11 @@ const FileUpload = () => {
     const logoStyle = useSelector((state:RootState) => state.logoStyles)
 
     const handleFileUpload = (e: any) =>{
-        // console.log( URL.createObjectURL(e.target.files[0])) 
         dispatch(setLogoImage(URL.createObjectURL(e.target.files[0])))
     }
 
     useEffect(()=>{
-        console.log(logoStyle)
+
     },[logoStyle])
 
     return (

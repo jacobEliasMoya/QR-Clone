@@ -25,6 +25,9 @@ const UrlLogoStyles = createSlice({
     name:'logostyles',
     initialState,
     reducers:{
+        setInitialImage: (state)=>{
+            return {...state, src: ''}
+        },
         setLogoImage: (state,action:PayloadAction<string>)=>{
             return {...state,src: action.payload}
         },
@@ -34,5 +37,5 @@ const UrlLogoStyles = createSlice({
     },
 })
 
-export const {setLogoDims,setLogoImage} = UrlLogoStyles.actions
+export const {setLogoDims,setLogoImage,setInitialImage} = UrlLogoStyles.actions
 export default UrlLogoStyles.reducer

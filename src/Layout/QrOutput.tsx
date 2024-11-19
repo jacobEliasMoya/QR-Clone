@@ -5,7 +5,6 @@ import Header2 from "../Components/Header2";
 import { useEffect, useState } from "react";
 import RegButton from "../Components/RegButton";
 import { FaDownload } from "react-icons/fa6";
-import placeholder from "../assets/yellow-happy-smile-face-emoticon-png.webp";
 
 const QrOutput = () => {
 
@@ -13,52 +12,40 @@ const QrOutput = () => {
     const qrStyles = useSelector((state:RootState)=>state.qrStyles);
     const qrLogo = useSelector((state:RootState)=>state.logoStyles);
 
-    const [initialSvg, setInitialSVG] = useState<any>();
     const [mainSvg, setSVG] = useState<any>();
     const [mainUrl, setMainUrl] = useState<string>();
 
-
-    const handleInitialSvg = () =>{
-        let x = document.querySelector('#svg')
-        setInitialSVG(x)
-    }    
+    // when items are updated, then there needs to be a snap shot after those changes []
 
     const handleSVG = () =>{
-        let x = document.querySelector('#svg')
-        setSVG(x)
+        setSVG(document.querySelector('#svg'))
     }
 
     const handleUrlSet = () =>{
         return new Promise((resolve,reject) => { 
             setTimeout(() => {
-                qrLogo.src !=  placeholder ? resolve(true) : reject(false);
+                mainSvg ? resolve(true) : reject(false);
             }, 500);
         })
     }
 
     useEffect(()=>{
-
         handleUrlSet()
-            .then((res)=>{
-                res ? handleSVG() : null
+            .then((res)=>{  
+                res ? setMainUrl(mainSvg.toDataURL()): ''
             })
-            .catch((err)=>{
-                console.log(err)
+            .catch(()=>{
+                console.log('err')
+            })
+            .finally(()=>{
+                console.log('done')
             })
 
     },[appUrl,qrStyles,qrLogo])
 
     useEffect(()=>{
-        mainSvg ? setMainUrl(mainSvg.toDataURL()) : null ;
-    },[mainSvg])
-
-    useEffect(()=>{
-        handleInitialSvg()    
-    },[])
-
-    useEffect(()=>{
-        initialSvg ? setMainUrl(initialSvg.toDataURL()) : null ;
-    },[initialSvg])
+        handleSVG()
+    },[mainSvg]) 
 
     return (
         <div className="min-h-full">
