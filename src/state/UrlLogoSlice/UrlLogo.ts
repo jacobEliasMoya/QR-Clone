@@ -1,5 +1,4 @@
 import { createSlice,PayloadAction } from "@reduxjs/toolkit";
-import qrasset from "../../assets/yellow-happy-smile-face-emoticon-png.webp"
 
 interface LogoStyles {
     useLogo:boolean,
@@ -13,7 +12,7 @@ interface LogoStyles {
 
 const initialState:LogoStyles = {
     useLogo: true,
-    src: qrasset,   
+    src: '',   
     x: undefined,
     y: undefined,
     dims: 150,
@@ -25,17 +24,20 @@ const UrlLogoStyles = createSlice({
     name:'logostyles',
     initialState,
     reducers:{
-        setInitialImage: (state)=>{
-            return {...state, src: ''}
+        setXOffset : (state,action:PayloadAction<number>) =>{
+            return {...state, x:action.payload}
         },
-        setLogoImage: (state,action:PayloadAction<string>)=>{
+        setYOffset : (state,action:PayloadAction<number>) =>{
+            return {...state, y:action.payload}
+        },
+        setLogoImage: (state, action:PayloadAction<string>)=>{
             return {...state,src: action.payload}
         },
-        setLogoDims: (state,action:PayloadAction<number>)=>{
+        setLogoDims: (state, action:PayloadAction<number>)=>{
             return {...state,dims: action.payload}
         }
     },
 })
 
-export const {setLogoDims,setLogoImage,setInitialImage} = UrlLogoStyles.actions
+export const {setLogoDims,setLogoImage, setXOffset} = UrlLogoStyles.actions
 export default UrlLogoStyles.reducer

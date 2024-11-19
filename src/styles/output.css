@@ -628,6 +628,10 @@ video {
   max-height: fit-content !important;
 }
 
+.max-h-96 {
+  max-height: 24rem !important;
+}
+
 .min-h-40 {
   min-height: 10rem !important;
 }
@@ -696,6 +700,10 @@ video {
 
 .break-words {
   overflow-wrap: break-word !important;
+}
+
+.break-all {
+  word-break: break-all !important;
 }
 
 .rounded {

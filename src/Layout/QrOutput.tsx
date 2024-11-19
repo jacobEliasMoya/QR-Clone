@@ -51,7 +51,7 @@ const QrOutput = () => {
         <div className="min-h-full">
             <div className="w-full h-full md:h-min block sticky top-0  p-8 "    >
                 
-                <Header2 h2Class={ `tracking-widest text-center mb-4 text-2xl text-green-600 ${appUrl.length > 0 && appUrl ? "": "hidden "}` } text={ appUrl.length > 0 && appUrl ? appUrl : '' } innerIcon={ undefined }/>
+                <Header2 h2Class={ `tracking-widest text-center mb-4 text-2xl text-green-600 break-all ${appUrl.length > 0 && appUrl ? "": "hidden  "}` } text={ appUrl.length > 0 && appUrl ? appUrl : '' } innerIcon={ undefined }/>
 
                 <QRCodeCanvas 
 
