@@ -31,6 +31,7 @@ const ControlSection = () => {
 
     useEffect(()=>{
         urlState ? verifyUrl(urlState) : null;
+        isUrl? handleUrlState(): null;
     },[urlState])
  
     useEffect(()=>{

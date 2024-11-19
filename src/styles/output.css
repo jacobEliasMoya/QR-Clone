@@ -554,6 +554,10 @@ video {
   display: none;
 }
 
+.relative {
+  position: relative !important;
+}
+
 .sticky {
   position: sticky !important;
 }
@@ -626,10 +630,6 @@ video {
 .max-h-fit {
   max-height: -moz-fit-content !important;
   max-height: fit-content !important;
-}
-
-.max-h-96 {
-  max-height: 24rem !important;
 }
 
 .min-h-40 {

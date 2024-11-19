@@ -92,7 +92,7 @@ const OptionsControl = () => {
 
             <div className="flex flex-wrap items-saart justify-between ">
                 <div className="w-full md:w-2/3 p-2">
-                    <Input inputType={'text'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleCustomHex} inputPlaceholder={'#ffffff'} rangeMin={undefined} rangeMax={undefined} rangeValue={undefined} />
+                    <Input inputType={'text'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleCustomHex} inputPlaceholder={'#ffffff'} rangeMin={undefined} rangeMax={undefined} rangeValue={undefined} inputOnPaste={undefined} />
                 </div>
                 <div className="w-full md:w-1/3 p-2">
                     <CirclePicker 
@@ -108,7 +108,7 @@ const OptionsControl = () => {
 
             <div className="flex flex-wrap items-center justify-between">
                 <div className="w-full md:w-2/3 p-2">
-                    <Input inputType={'text'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleCustomDot} inputPlaceholder={'#ffffff'} rangeMin={undefined} rangeMax={undefined} rangeValue={undefined} />
+                    <Input inputType={'text'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleCustomDot} inputPlaceholder={'#ffffff'} rangeMin={undefined} rangeMax={undefined} rangeValue={undefined} inputOnPaste={undefined} />
                 </div>
                 <div className="w-full md:w-1/3 p-2">
                     <CirclePicker 
@@ -128,11 +128,11 @@ const OptionsControl = () => {
 
             <div className="flex flex-wrap items-center justify-between">
                 <div className="w-full md:w-1/2 p-2">
-                    <Input inputType={'number'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleCustomMargin} inputPlaceholder={'0'} rangeMin={1} rangeMax={5} rangeValue={appStyles.qrMargin} />
+                    <Input inputType={'number'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleCustomMargin} inputPlaceholder={'0'} rangeMin={1} rangeMax={5} rangeValue={appStyles.qrMargin} inputOnPaste={undefined} />
                 </div>
 
                 <div className="w-full md:w-1/2 p-2">
-                    <Input inputType={'range'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleMarginChange} inputPlaceholder={'#ffffff'} rangeMin={0} rangeMax={5} rangeValue={appStyles.qrMargin} />
+                    <Input inputType={'range'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleMarginChange} inputPlaceholder={'#ffffff'} rangeMin={0} rangeMax={5} rangeValue={appStyles.qrMargin} inputOnPaste={undefined} />
                 </div>
             </div>    
             
@@ -146,11 +146,11 @@ const OptionsControl = () => {
 
             <div className="flex flex-wrap items-center justify-between">
                 <div className="w-full md:w-1/2 p-2">
-                    <Input inputType={'number'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={customLogoSizeChange} inputPlaceholder={'0'} rangeMin={0} rangeMax={150} rangeValue={logoStyles.dims} />
+                    <Input inputType={'number'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={customLogoSizeChange} inputPlaceholder={'0'} rangeMin={0} rangeMax={150} rangeValue={logoStyles.dims} inputOnPaste={undefined} />
                 </div>
 
                 <div className="w-full md:w-1/2 p-2">
-                    <Input inputType={'range'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleLogoSizeChange} inputPlaceholder={'#ffffff'} rangeMin={0} rangeMax={150} rangeValue={logoStyles.dims} />
+                    <Input inputType={'range'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleLogoSizeChange} inputPlaceholder={'#ffffff'} rangeMin={0} rangeMax={150} rangeValue={logoStyles.dims} inputOnPaste={undefined} />
                 </div>
             </div>    
             </div>
