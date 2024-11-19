@@ -15,7 +15,7 @@ const initialState:LogoStyles = {
     src: '',   
     x: undefined,
     y: undefined,
-    dims: 150,
+    dims: 120,
     opacity: 1,
     excavate: true,
 }

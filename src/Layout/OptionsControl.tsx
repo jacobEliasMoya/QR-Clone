@@ -150,7 +150,7 @@ const OptionsControl = () => {
                 </div>
 
                 <div className="w-full md:w-1/2 p-2">
-                    <Input inputType={'range'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleLogoSizeChange} inputPlaceholder={'#ffffff'} rangeMin={0} rangeMax={150} rangeValue={logoStyles.dims} inputOnPaste={undefined} />
+                    <Input inputType={'range'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleLogoSizeChange} inputPlaceholder={'#ffffff'} rangeMin={0} rangeMax={120} rangeValue={logoStyles.dims} inputOnPaste={undefined} />
                 </div>
             </div>    
             </div>
