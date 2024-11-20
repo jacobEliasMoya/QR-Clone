@@ -554,10 +554,6 @@ video {
   display: none;
 }
 
-.relative {
-  position: relative !important;
-}
-
 .sticky {
   position: sticky !important;
 }
