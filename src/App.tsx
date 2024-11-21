@@ -1,6 +1,6 @@
 import Header from "./Layout/Header"
 import KeyItems from "./Components/KeyItems"
-import QrSection from "./Layout/qrSection"
+import QrSection from "./Layout/QrSection"
 import TrustedBySection from "./Layout/TrustedBySection"
 import OurBenifits from "./Layout/OurBenifits"
 
