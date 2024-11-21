@@ -1,7 +1,7 @@
 // import React from 'react'
 import { useEffect, useState } from 'react';
 import Header3 from '../Components/Header3';
-import { FaGear } from "react-icons/fa6";
+import { FaGear,FaImage } from "react-icons/fa6";
 import { CirclePicker } from 'react-color';
 import Input from '../Components/Input';
 import RegButton from '../Components/RegButton';
@@ -18,6 +18,7 @@ const OptionsControl = () => {
     const  logoStyles = useSelector((state:RootState) => state.logoStyles);
 
     const [isExpanded,setIsExpanded] = useState<boolean>(false);
+    const [isExpanded2,setIsExpanded2] = useState<boolean>(false);
     const [customHex,setCustomHex] = useState<string>()
     const [customDot,setCustomDot] = useState<string>()
     const [customMargin,setCustomMargin] = useState<number>()
@@ -58,7 +59,9 @@ const OptionsControl = () => {
     const handleChange = () =>{
         setIsExpanded(prev=>!prev);
     }
-
+    const handleChange2 = () =>{
+        setIsExpanded2(prev=>!prev);
+    }
     useEffect(()=>{
         customHex ? dispatch(setBgColor(customHex)) : "" ;
     },[customHex])
@@ -135,8 +138,11 @@ const OptionsControl = () => {
                     <Input inputType={'range'} inputId={'qr-color'} inputName={'qr-color'} inputOnchange={handleMarginChange} inputPlaceholder={'#ffffff'} rangeMin={0} rangeMax={5} rangeValue={appStyles.qrMargin} inputOnPaste={undefined} />
                 </div>
             </div>    
-            
-            <hr className='mt-5'/>
+        </div>
+
+        <RegButton buttonText={'Logo'} buttonClick={handleChange2} additionalClasses={`w-full text-left flex items-center gap-4 md:justify-start justify-center ${!isExpanded2 ? ' mb-4 ' : ''}`} buttonIcon={<FaImage />} isDownload={false} buttonLink={undefined}/> 
+
+        <div className= {isExpanded2 ?'w-full transition-all p-0 max-h-fit'  : 'w-full transition-all p-0 max-h-0 overflow-hidden' }>
 
             <Header3 h3Class={'mt-4 text-blue-500 flex items-center gap-2 text-xl'} text={'Logo:'} innerIcon={undefined} />
 
@@ -154,8 +160,7 @@ const OptionsControl = () => {
                 </div>
             </div>    
             </div>
-
-    </div>
+        </div>
   )
 }
 

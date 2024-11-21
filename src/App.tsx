@@ -1,24 +1,19 @@
-import ControlSection from "./Layout/ControlSection"
 import Header from "./Layout/Header"
-import OptionsControl from "./Layout/OptionsControl"
-import QrOutput from "./Layout/QrOutput"
+import KeyItems from "./Components/KeyItems"
+import QrSection from "./Layout/qrSection"
+import TrustedBySection from "./Layout/TrustedBySection"
+import OurBenifits from "./Layout/OurBenifits"
 
 function App() {
 
   return (
-    <>
+    <div className="font-retro">
       <Header />
-      <div className="font-retro  w-full flex flex-wrap mx-auto min-h-40 rounded  p-4 md:p-8">
-        <div className="md:w-2/3 w-full bg-zinc-100 p-8 ">
-          <ControlSection />
-          <hr/>
-          <OptionsControl/>
-        </div>
-        <div className=" md:w-1/3 w-full bg-zinc-200">
-          <QrOutput/>
-        </div>
-      </div>
-    </>
+      <QrSection />
+      <KeyItems/>
+      <TrustedBySection/>
+      <OurBenifits/>
+    </div>
   )
 }
 
